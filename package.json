@@ -1,0 +1,23 @@
+{
+  "name": "js-poject",
+  "version": "1.0.0",
+  "description": "project demo for javascript, es6, babel, webpack, nodejs etc.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/keshav-chaure/js-poject.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/keshav-chaure/js-poject/issues"
+  },
+  "homepage": "https://github.com/keshav-chaure/js-poject#readme",
+  "devDependencies": {
+    "webpack": "^4.30.0"
+  }
+}
