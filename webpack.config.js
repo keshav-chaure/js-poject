@@ -6,7 +6,7 @@ const webpack = require('webpack');
  
 module.exports = {
     mode: 'development',
-    entry: './src/index.js',
+    entry: './src/',
     output: {
         filename: 'build.js',
         path: path.resolve(__dirname, 'dist')
@@ -36,10 +36,14 @@ module.exports = {
     },
     plugins: [
       // new CleanWebpackPlugin(['dist/*']) for < v2 versions of CleanWebpackPlugin
+      
+      //this was deleting dist folder content to clean build
       new CleanWebpackPlugin(),
+      
       new HtmlWebpackPlugin({
-        title: 'Hot Module Replacement'
+        template: path.resolve(__dirname, 'index.html')
       }),
+      
       new webpack.HotModuleReplacementPlugin()
     ],
 

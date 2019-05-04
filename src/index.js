@@ -4,12 +4,15 @@ console.log(by()); // 5
 console.log("hi webpack!!!");
 
 
-/*
-var a=calculate.add(1,2);
-console.log(a);
-var divElement=document.getElementById("rootElement");
-divElement.innerHTML=a;
 
-*/
+ var divElement=document.getElementById("rootElement");
+ console.log(divElement);
+ divElement.innerHTML="how are you!!!";
+ divElement.innerHTML="some more  ";
+ divElement.innerHTML="Hi how are you!!";
+
+
+
+
 
 
