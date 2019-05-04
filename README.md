@@ -4,3 +4,4 @@ install webpack using npm install --save-dev webpack
 install bebel and bebel core > npm install --save-dev bebel bebel-core
 create webpack.config.js with entry and output for build
 configure weback.config.js with module - all file with .js will processed by bebel es6 to js
+install bebel-preset-es2015 to translate es6 --.bebelrc file created 
