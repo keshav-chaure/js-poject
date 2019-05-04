@@ -1,10 +1,7 @@
 export function hi(){
     console.log("hi");
+    return "hi";
     
 
 }
 
-export function by(){
-    console.log("by");
-    
-}
