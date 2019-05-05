@@ -1,3 +1,5 @@
+import {loginService} from '../services/login-service';
+
 export let Login = {
     render : async () => {
         let view =  /*html*/`
@@ -13,43 +15,27 @@ export let Login = {
         return view
     },
     after_render: async () => {
+       
+        const el = document.getElementById("submit-login");
         
-        var el = document.getElementById("submit-login");
-
-        if (el.addEventListener) {
-           el.addEventListener("click", submitLoginData, false);
+        if (el.addEventListener) {        
+            el.addEventListener(
+                                 "click", 
+                                 function(){
+                                 loginService.submitLoginData(el)
+                                 },
+                                  false
+                                  );
+         // in addEventListner method we should pass no arg method so do some trick as above
         } else {
-           el.attachEvent('onclick', submitLoginData);
+            
+           el.attachEvent('onclick', function(){
+                                       loginService.submitLoginData(el)
+                                    }
+                          );
         }
         
-        function submitLoginData() {
-        
-           var user = {},
-              parent = el.parentNode,
-              ename = document.getElementById("username"),
-              epass = document.getElementById("password");
-        
-           user.username = ename.value;
-           user.password = epass.value;
-           console.log(user);
-           (validate(user)) ? authenticate(user) : showErrorMessage(parent);
-        }
-        function showErrorMessage(parent) {
-           var e = document.createElement('span');
-           e.innerHTML = "Please enter correct data!";
-           parent.appendChild(e);
-        }
-        
-        function authenticate(user) {
-            //rest call
-           window.location='/#/home';
-        }
-        
-        function validate(user) {
-           return (user.username.length > 3 && user.password.length > 3) ? true : false;
-        
-        }
-        
+       
     }
         
 }
