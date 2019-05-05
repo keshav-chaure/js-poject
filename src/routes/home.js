@@ -20,8 +20,27 @@ export let getPostsList = async () => {
 }
 
 export let Home = {
+    render : async () => {
+        
+        let view =  /*html*/`
+            <section class="section">
+                <h1> Home </h1>
+                <ul>
+                This is list for data
+                </ul>
+            </section>
+        `
+        return view
+    }
+    , after_render: async () => {
+    }
+ 
+ }
+ 
+export let Home1 = {
    render : async () => {
        let posts = await getPostsList()
+        console.log(post);
        let view =  /*html*/`
            <section class="section">
                <h1> Home </h1>

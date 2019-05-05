@@ -1,4 +1,4 @@
-import { Utils}  from './utils';
+import { Utils}  from '../services/utils';
 
 export let  getPost = async (id) => {
     const options = {

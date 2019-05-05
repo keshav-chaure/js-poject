@@ -1,11 +1,12 @@
 import { hi } from './calculate';
 import { loginName } from './login';
-import {Home } from './login/home';
-import {About } from './login/about';
-import {Register } from './login/register.js';
-import {PostShow } from './login/postshow';
-import {Error404} from './login/error404';
-import {Utils} from './login/utils';
+import {Login } from './routes/login';
+import {Home } from './routes/home';
+import {About } from './routes/about';
+import {Register } from './routes/register.js';
+import {PostShow } from './routes/postshow';
+import {Error404} from './routes/error404';
+import {Utils} from './services/utils';
 
 import Navbar       from './views/components/Navbar';
 import Bottombar    from './views/components/Bottombar'; 
@@ -14,7 +15,8 @@ console.log(hi()); // 121
 console.log("hi webpack!!!");
 // List of supported routes. Any url other than these routes will throw a 404 error
 const routes = {
-   '/'             : Home
+   '/'             : Login
+   ,'/home'         :Home
    , '/about'      : About
    , '/p/:id'      : PostShow
    , '/register'   : Register
@@ -28,12 +30,9 @@ const router = async () => {
       const header = null || document.getElementById('header_container');
       const content = null || document.getElementById('page_container');
       const footer = null || document.getElementById('footer_container');
+      const appRoot = null || document.getElementById('rootElement');
       
-      // Render the Header and footer of the page
-      header.innerHTML = await Navbar.render();
-      await Navbar.after_render();
-      footer.innerHTML = await Bottombar.render();
-      await Bottombar.after_render();
+     
   
   
       // Get the parsed URl from the addressbar
@@ -45,7 +44,19 @@ const router = async () => {
       // Get the page from our hash of supported routes.
       // If the parsed URL is not in our list of supported routes, select the 404 page instead
       let page = routes[parsedURL] ? routes[parsedURL] : Error404
-      content.innerHTML = await page.render();
+      
+      if(parsedURL =='/'){
+
+         appRoot.innerHTML = await page.render();
+      }else{
+         appRoot.innerHTML ="";
+         // Render the Header and footer of the page
+         header.innerHTML = await Navbar.render();
+         await Navbar.after_render();
+         footer.innerHTML = await Bottombar.render();
+         await Bottombar.after_render();
+         content.innerHTML = await page.render();
+      }
       await page.after_render();
 }
 
@@ -76,46 +87,10 @@ const parseRequestURL = () => {
 
 
 
-
-
 var divElement = document.getElementById("rootElement");
 // divElement.appendChild(loginName());
 console.log(loginName());
 
-var el = document.getElementById("submit-login");
-
-if (el.addEventListener) {
-   el.addEventListener("click", submitLoginData, false);
-} else {
-   el.attachEvent('onclick', submitLoginData);
-}
-
-function submitLoginData() {
-
-   var user = {},
-      parent = el.parentNode,
-      ename = document.getElementById("username"),
-      epass = document.getElementById("password");
-
-   user.username = ename.value;
-   user.password = epass.value;
-   console.log(user);
-   (validate(user)) ? authenticate(user) : showErrorMessage(parent);
-}
-function showErrorMessage(parent) {
-   var e = document.createElement('span');
-   e.innerHTML = "Please enter correct data!";
-   parent.appendChild(e);
-}
-
-function authenticate(user) {
-   console.log("rest call!!!");
-}
-
-function validate(user) {
-   return (user.username.length > 3 && user.password.length > 3) ? true : false;
-
-}
 
 /*
 

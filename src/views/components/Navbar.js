@@ -12,7 +12,7 @@ let Navbar = {
                     </div>
                     <div id="navbarBasicExample" class="navbar-menu is-active" aria-expanded="false">
                         <div class="navbar-start">
-                            <a class="navbar-item" href="/#/">
+                            <a class="navbar-item" href="/#/home">
                                 Home
                             </a>
                             <a class="navbar-item" href="/#/about">
