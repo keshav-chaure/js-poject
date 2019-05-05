@@ -7,12 +7,31 @@ import {Register } from './routes/register.js';
 import {PostShow } from './routes/postshow';
 import {Error404} from './routes/error404';
 import {Utils} from './services/utils';
+import   { twoSecLate, tenSecLate } from './practice';
 
 import Navbar       from './views/components/Navbar';
 import Bottombar    from './views/components/Bottombar'; 
 
-console.log(hi()); // 121
-console.log("hi webpack!!!");
+/***Practice */
+async function asyncCall() {
+  console.log('calling');
+  console.log(twoSecLate);
+  var result = await twoSecLate();
+  console.log(result);
+  // expected output: 'resolved'
+
+
+}
+
+  
+var result1 = tenSecLate();
+console.log(result1);
+result1.then(function(val){
+ console.log(val);
+})
+asyncCall();
+
+/**End  */
 // List of supported routes. Any url other than these routes will throw a 404 error
 const routes = {
    '/'             : Login
