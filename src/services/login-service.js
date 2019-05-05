@@ -14,7 +14,8 @@ export let loginService={
         */
       
       test: (a)=>{
-           console.log("aa");
+           console.log(self); //window object
+           console.log(this); // undefined
             console.log(a);
        },
            
@@ -43,7 +44,7 @@ export let loginService={
             //rest call
            window.location='/#/home';
         },
-  
+ 
         validate(user){
            return (user.username.length > 3 && user.password.length > 3) ? true : false;
         

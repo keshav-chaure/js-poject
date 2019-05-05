@@ -17,15 +17,24 @@ export let Login = {
     after_render: async () => {
        
         const el = document.getElementById("submit-login");
-        
+       function  wrappedFunction(){
+         loginService.submitLoginData(el);
+       }
         if (el.addEventListener) {        
-            el.addEventListener(
+           /* el.addEventListener(
                                  "click", 
                                  function(){
                                  loginService.submitLoginData(el)
                                  },
                                   false
                                   );
+          */
+         el.addEventListener(
+            "click",          
+            wrappedFunction.bind(null,loginService.submitLoginData),
+             false
+             );
+            
          // in addEventListner method we should pass no arg method so do some trick as above
         } else {
             
